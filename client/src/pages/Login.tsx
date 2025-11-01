@@ -15,24 +15,42 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login attempt:", { email, password });
     
-    login({
-      id: "user-1",
-      username: "demo_user",
-      email: email,
-      fullName: "Demo User",
-      profilePicture: "https://i.pravatar.cc/150?img=1"
-    });
-    
-    toast({
-      title: "Welcome back!",
-      description: "You've successfully logged in.",
-    });
-    
-    setLocation("/");
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        toast({
+          title: "Login failed",
+          description: error.error || "Invalid credentials",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const data = await response.json();
+      login(data.user, data.token);
+      
+      toast({
+        title: "Welcome back!",
+        description: "You've successfully logged in.",
+      });
+      
+      setLocation("/");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

@@ -20,7 +20,7 @@ export default function Register() {
     confirmPassword: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (formData.password !== formData.confirmPassword) {
@@ -32,21 +32,44 @@ export default function Register() {
       return;
     }
 
-    console.log("Register attempt:", formData);
-    
-    login({
-      id: "user-new",
-      username: formData.username,
-      email: formData.email,
-      fullName: formData.fullName,
-    });
-    
-    toast({
-      title: "Account created!",
-      description: "Welcome to BlogHub. Start sharing your stories.",
-    });
-    
-    setLocation("/");
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          fullName: formData.fullName,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        toast({
+          title: "Registration failed",
+          description: error.error || "Could not create account",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const data = await response.json();
+      login(data.user, data.token);
+      
+      toast({
+        title: "Account created!",
+        description: "Welcome to BlogHub. Start sharing your stories.",
+      });
+      
+      setLocation("/");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleChange = (field: string, value: string) => {
