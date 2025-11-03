@@ -1,0 +1,138 @@
+/* App.css */
+
+/* Smooth transitions and layout */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Optional hover enhancement */
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Blog grid styling */
+.grid div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+footer {
+  margin-top: auto;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background: #2c3e50;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.logo {
+  font-weight: 700;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Blog Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+}
+.blog-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+.read-more {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Auth Forms */
+.auth-form {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.auth-form h2 {
+  text-align: center;
+}
+.auth-form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.auth-form button {
+  width: 100%;
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.auth-form button:hover {
+  background: #2980b9;
+}
+
+/* Read Page */
+.read-page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.back-home {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
