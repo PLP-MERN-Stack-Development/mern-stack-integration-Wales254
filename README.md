@@ -113,6 +113,3 @@ This project is licensed under the **MIT License**.
 ### 👨‍💻 Author:[(Wales254)](https://github.com/Wales254)
 
 > *“Built with passion for learning and innovation.”*
-
-Would you like me to include **screenshots section** and placeholders (so the README looks even more attractive when viewed on GitHub)?
-```
